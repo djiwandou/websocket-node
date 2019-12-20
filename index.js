@@ -9,10 +9,10 @@ const wss = new WebSocket.Server({
 });
 console.log("Web Socket Server started on port 3000");
 //const and global variables
-const MAINTENANCE = false
+let version = '0.0.0';
 var version_app_current = '1.15.4';
 var maintenance_mode = false;
-let version = '0.0.0'
+var version_maint = '0.0.0';
 
 // web view at http://localhost:8080/admin-ws
 app.get('/admin-ws', function(req, res) {
@@ -50,8 +50,10 @@ wss.on('connection', function connection(ws) {
 
     while (time != 0) {
 
-        if (!MAINTENANCE) {
+        if (!maintenance_mode) {
             version = version_app_current
+        } else {
+            version = version_maint
         }
 
         ws.send(JSON.stringify({

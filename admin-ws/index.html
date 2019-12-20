@@ -13,9 +13,22 @@
 
     <div class="container">
         <div class="jumbotron">
-            <h1>res.sendFile() Works!</h1>
+            <h3>Admin Websocket</h3>
         </div>
     </div>
+
+    <form action="/admin-ws-version/" method="GET">
+        <label for="version_app">Enter version: </label>
+        <input id="version_app" type="text" name="version_field" value="1.15.4">
+        <input type="submit" value="Set version">        
+    </form>
+
+    <form action="/admin-ws-maintenance/" method="GET">                
+        <label for="maintenance_app">Maintenance mode: </label>
+        <input type="checkbox" id="maintenance_app" name="maintenance_mode" value="true">
+        <input type="submit" value="Set maint. mode">
+    </form>
+
 
 </body>
 </html>
